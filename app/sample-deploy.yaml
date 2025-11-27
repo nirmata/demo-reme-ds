@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: app-alpha
-        team: dev
+        team: qa
     spec:
       securityContext:
         runAsNonRoot: true
@@ -23,13 +23,13 @@ spec:
         image: busybox
         command: ["sleep", "3600"]
         securityContext:
-          allowPrivilegeEscalation: false
           runAsNonRoot: true
+          allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
           capabilities:
             drop:
-            - ALL
+              - ALL
         volumeMounts:
         - name: host-volume
           mountPath: /host
